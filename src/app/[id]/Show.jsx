@@ -1,4 +1,5 @@
 "use client"
+import Image from 'next/image';
 import React, { useState } from 'react'
 
 export default function Show({ singleProduct }) {
@@ -27,7 +28,7 @@ export default function Show({ singleProduct }) {
             const postAPI = `https://api.imgflip.com/caption_image?template_id=${singleProduct.id}&username=${user}&password=${pass}&text0=${textOne}&text1=${textTwo}`
             const res = await fetch(postAPI)
             const result = await res.json()
-            console.log("result--->", result)
+            // console.log("result--->", result)
             setUpdateMeme(result.data.url)
             setTextOne("");
             setTextTwo("");
@@ -66,7 +67,7 @@ export default function Show({ singleProduct }) {
 
                 setDownloadDisabled(true);
             } catch (error) {
-                console.error('Error downloading meme:', error);
+                alert('Error downloading meme:', error);
                 setDownloadDisabled(true);
             }
         }
@@ -84,7 +85,9 @@ export default function Show({ singleProduct }) {
 
                             <div class="lg:w-1/2 bg-current sm:w-1/2 mb-10 px-4 ">
                                 <div class=" h-80 overflow-hidden ">
-                                    <img alt="content" class=" object-contain  object-center h-full w-full" src={singleProduct.url} />
+                                    <Image alt="content" class=" object-contain  object-center h-full w-full" src={singleProduct.url} width={180}
+                                        height={37} />
+                                    {/* <img alt="content" class=" object-contain  object-center h-full w-full" src={singleProduct.url} /> */}
                                 </div>
                             </div>
 
