@@ -25,7 +25,8 @@ export default function Show({ singleProduct }) {
     const handleGenerateMeme = async () => {
         if (textOne && textTwo) {
             // console.log('Generating meme with Text One:', textOne, 'and Text Two:', textTwo);
-            const postAPI = `https://api.imgflip.com/caption_image?template_id=${singleProduct.id}&username=${user}&password=${pass}&text0=${textOne}&text1=${textTwo}`
+            // const postAPI = `https://api.imgflip.com/caption_image?template_id=${singleProduct.id}&username=${user}&password=${pass}&text0=${textOne}&text1=${textTwo}`
+            const postAPI = `https://api.imgflip.com/caption_image?template_id=${singleProduct.id}&username=AbidKhan4&password=imgFlip786@&text0=${textOne}&text1=${textTwo}`
             const res = await fetch(postAPI)
             const result = await res.json()
             // console.log("result--->", result)
@@ -127,19 +128,6 @@ export default function Show({ singleProduct }) {
                                     style={{ backgroundColor: downloadDisabled ? "pink" : "blue" }}
                                 >Download
                                 </button>
-
-
-
-
-                                <a
-                                    href={updateMeme}
-                                    // download="meme.png"
-                                    download
-                                    // target="_blank"
-                                    rel={updateMeme}
-                                >
-                                    <button>Download Meme</button>
-                                </a>
                             </div>
 
                         </div>
