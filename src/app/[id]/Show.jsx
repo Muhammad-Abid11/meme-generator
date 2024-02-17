@@ -74,6 +74,9 @@ export default function Show({ singleProduct }) {
         }
     };
 
+    const reset = () => {
+        setUpdateMeme("")
+    }
 
     return (
         <>
@@ -84,9 +87,9 @@ export default function Show({ singleProduct }) {
                     <div class="container  mx-auto">
                         <div class="flex flex-wrap text-center lg:w-2/3 m-auto ">
 
-                            <div class="lg:w-1/2 bg-current sm:w-1/2 mb-10 px-4 ">
+                            <div class="m-auto lg:w-1/2 bg-current sm:w-1/2 mb-10 px-4 ">
                                 <div class=" h-80 overflow-hidden ">
-                                    <Image alt="content" class=" object-contain  object-center h-full w-full" src={singleProduct.url} width={180}
+                                    <Image alt="content" class=" object-contain  object-center h-full w-full" src={updateMeme ? updateMeme : singleProduct.url} width={180}
                                         height={37} />
                                     {/* <img alt="content" class=" object-contain  object-center h-full w-full" src={singleProduct.url} /> */}
                                 </div>
@@ -122,12 +125,26 @@ export default function Show({ singleProduct }) {
                                     Generate Meme
                                 </button>
 
-                                <button type="button" class="flex mx-auto my-8 px-8 py-3 text-white bg-blue-300 rounded focus:outline-none"
-                                    disabled={downloadDisabled}
-                                    onClick={handleDownloadMeme}
-                                    style={{ backgroundColor: downloadDisabled ? "pink" : "blue" }}
-                                >Download
-                                </button>
+                                {updateMeme &&
+                                    <div className='flex justify-center align-center my-8'>
+                                        <button type="button" class="w-1/2 flex justify-center py-3 items-center text-white bg-blue-300 rounded focus:outline-none rounded"
+                                            disabled={downloadDisabled}
+                                            onClick={handleDownloadMeme}
+                                            style={{ backgroundColor: downloadDisabled ? "pink" : "blue" }}
+                                        >Download
+                                        </button>
+                                        <button
+                                            type="button"
+                                            onClick={reset}
+                                            className="w-1/2 flex justify-center py-3 items-center text-white bg-red-700 rounded focus:outline-none rounded mx-4"
+                                        >
+                                            Reset
+                                        </button>
+                                    </div>
+
+                                }
+
+
                             </div>
 
                         </div>
