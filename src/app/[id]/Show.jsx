@@ -137,7 +137,7 @@ export default function Show({ singleProduct }) {
 
                                 {[...Array(singleProduct.box_count)].map((data, index) => <input //similarly yhn hamen input box ki lenght malum thi is liye utne input return by map
                                     required
-
+                                    key={index}
                                     type="text"
                                     name={`text_${index}`}
                                     placeholder={`Enter Text Box ${index + 1}`}
